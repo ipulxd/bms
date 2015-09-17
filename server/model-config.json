@@ -49,10 +49,6 @@
     "dataSource": "transient",
     "public": false
   },
-  "DetailProperty": {
-    "dataSource": "transient",
-    "public": false
-  },
   "GenericAddress": {
     "dataSource": "transient",
     "public": false
