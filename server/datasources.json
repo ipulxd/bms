@@ -1,0 +1,19 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "transient": {
+    "name": "transient",
+    "connector": "transient"
+  },
+  "dsmain": {
+    "host": "202.149.74.162",
+    "port": 5432,
+    "database": "bms",
+    "password": "bms212",
+    "name": "dsmain",
+    "connector": "postgresql",
+    "user": "userbms"
+  }
+}

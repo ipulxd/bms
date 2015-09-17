@@ -1,0 +1,40 @@
+{
+  "name": "CompanyContact",
+  "base": "Model",
+  "idInjection": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "id": true,
+      "description": "Nama kontak personal perusahaan"
+    },
+    "position": {
+      "type": "string",
+      "description": "Jabatan kontak dalam perusahaan"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Nomor telepon kontak"
+    },
+    "mphone": {
+      "type": "string",
+      "description": "Nomor HP kontak"
+    },
+    "email": {
+      "type": "string",
+      "description": "Alamat email kontak"
+    },
+    "idRegType": {
+      "type": "string",
+      "description": "Jenis ID (KTP, SIM, PASSPORT)"
+    },
+    "idRegNumber": {
+      "type": "string",
+      "description": "Nomor ID"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

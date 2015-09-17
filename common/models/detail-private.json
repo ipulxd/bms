@@ -1,0 +1,63 @@
+{
+  "name": "DetailPrivate",
+  "base": "Model",
+  "idInjection": false,
+  "hidden": [
+    "id"
+  ],
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "generated": true
+    },
+    "idRegType": {
+      "type": "string",
+      "description": "Jenis ID (KTP, SIM, PASSPORT)"
+    },
+    "idRegNumber": {
+      "type": "string",
+      "description": "Nomor ID"
+    },
+    "salutation": {
+      "type": "string",
+      "description": "Sapaan eq. Mr, Ms, Mrs, ..."
+    },
+    "nationality": {
+      "type": "string"
+    },
+    "dob": {
+      "type": "date",
+      "description": "Date of birth"
+    },
+    "sex": {
+      "type": "string"
+    },
+    "religion": {
+      "type": "string"
+    },
+    "marital": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string",
+      "description": "Nomor telepon"
+    },
+    "mphone": {
+      "type": "string",
+      "description": "Nomor HP"
+    },
+    "fax": {
+      "type": "string",
+      "description": "Nomor Facsimile"
+    },
+    "email": {
+      "type": "string",
+      "description": "Alamat email kontak"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

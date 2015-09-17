@@ -1,0 +1,32 @@
+{
+  "name": "PersonDetail",
+  "base": "Model",
+  "idInjection": false,
+  "properties": {
+    "as": {
+      "type": "String",
+      "id": true,
+      "required": true
+    },
+    "private": {
+      "type": "CompanyData"
+    },
+    "taxReg": {
+      "type": "String"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "companyData": {
+      "type": "embedsOne",
+      "property": "company",
+      "model": "CompanyData",
+      "options": {
+        "validate": true,
+        "forceId": false
+      }
+    }
+  },
+  "acls": [],
+  "methods": []
+}

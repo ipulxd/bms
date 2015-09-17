@@ -1,0 +1,23 @@
+{
+  "name": "DetailCompany",
+  "base": "Model",
+  "idInjection": false,
+  "hidden": [
+    "id"
+  ],
+  "properties": {
+    "contact": {
+      "type": "CompanyContact",
+      "description": "Data kontak personal perusahaan"
+    },
+    "id": {
+      "type": "number",
+      "id": true,
+      "generated": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

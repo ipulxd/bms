@@ -1,0 +1,17 @@
+{
+  "name": "DetailProperty",
+  "base": "Model",
+  "idInjection": false,
+  "properties": {
+    "address": {
+      "type": "GenericAddress"
+    },
+    "idReg": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

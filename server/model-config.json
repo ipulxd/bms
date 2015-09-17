@@ -1,0 +1,116 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "../common/models/helpers",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "db"
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Person": {
+    "dataSource": "dsmain",
+    "public": true
+  },
+  "DetailCompany": {
+    "dataSource": "transient",
+    "public": false
+  },
+  "DetailPrivate": {
+    "dataSource": "transient",
+    "public": false
+  },
+  "CompanyContact": {
+    "dataSource": "transient",
+    "public": false
+  },
+  "DetailProperty": {
+    "dataSource": "transient",
+    "public": false
+  },
+  "GenericAddress": {
+    "dataSource": "transient",
+    "public": false
+  },
+  "PersonAddress": {
+    "dataSource": "dsmain",
+    "public": true
+  },
+  "CompanyPropertyRel": {
+    "dataSource": "dsmain",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Company": {
+    "dataSource": "dsmain",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Property": {
+    "dataSource": "dsmain",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "Building": {
+    "dataSource": "dsmain",
+    "public": true,
+    "$promise": {},
+    "$resolved": true
+  },
+  "UnitType": {
+    "dataSource": "dsmain",
+    "public": true
+  },
+  "TariffType": {
+    "dataSource": "dsmain",
+    "public": true
+  },
+  "Tariff": {
+    "dataSource": "dsmain",
+    "public": true
+  },
+  "Tenancy": {
+    "dataSource": "dsmain",
+    "public": true
+  },
+  "Unit": {
+    "dataSource": "dsmain",
+    "public": true
+  },
+  "Ownership": {
+    "dataSource": "dsmain",
+    "public": true
+  },
+  "Helper": {
+    "dataSource": null,
+    "public": true
+  }
+}

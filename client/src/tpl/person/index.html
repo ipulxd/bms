@@ -1,0 +1,76 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3" >
+    <i class="fa fa-user m-r-xs"></i>
+    Person
+    <a ui-sref="app.person.new" class="btn btn-sm btn-success btn-addon m-l-md">
+      <i class="fa fa-plus"></i> Add New
+    </a>
+  </h1>
+</div>
+<div class="wrapper-md" ng-controller="PersonIndexCtrl">
+  <div class="panel panel-default">
+    <table st-table="displayPeople" st-safe-src="people" class="table table-striped">
+      <thead class="panel-heading">
+      <tr>
+        <th st-sort="name">Name</th>
+        <th st-sort="isCompany">Comp.</th>
+        <th st-sort="address">Address</th>
+        <th st-sort="phone">Phone</th>
+
+        <th width="50"></th>
+      </tr>
+      <tr>
+        <th>
+          <input ng-model="sp.name" placeholder="search.." class="input-sm form-control" type="search"/>
+        </th>
+        <th>
+          <select ng-model="sp.isCompany" class="input-sm form-control">
+            <option value="">All</option>
+            <option value="true">Comp</option>
+            <option value="false">Priv</option>
+          </select>
+        </th>
+        <th colspan="2">
+          <input ng-model="sp.addressCity" placeholder="search.." class="input-sm form-control" type="search"
+                 ng-show="sp.orderMethodName ==='Kanvas'"/>
+          <input ng-model="sp.addressCity" placeholder="search pusat.." class="input-sm form-control" type="search"
+                 ng-show="sp.orderMethodName ==='Grosir'"/>
+          <input ng-model="sp2.addressCity" placeholder="search cabang.." class="input-sm form-control" type="search"
+                 ng-show="sp.orderMethodName ==='Grosir'"/>
+        </th>
+
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="row in displayPeople | filter: sp">
+        <td>{{row.name}}</td>
+        <td>
+          <span ng-if="row.isCompany" class="label bg-info">Comp</span>
+          <span ng-if="!row.isCompany" class="label bg-primary">Priv</span>
+        </td>
+        <td>{{row.addressCity}}<span ng-show="row.addressCity && row.addressProvince">,</span> {{row.addressProvince}}</td>
+        <td>{{row.phone}}</td>
+
+        <td style="white-space: nowrap">
+          <div class="buttons pull-right">
+            <a ui-sref="app.person.edit({ id: row.id })" class="btn btn-xs btn-success" tooltip="Edit">
+              <i class="fa fa-edit"></i> edit
+            </a>
+            <a ng-click="remove(row)" class="btn btn-xs btn-danger" tooltip="Delete">
+              <i class="fa fa-times"></i> del
+            </a>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="5" class="text-center">
+          <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7" class="no-margin"></div>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

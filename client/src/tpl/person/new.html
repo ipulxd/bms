@@ -1,0 +1,12 @@
+<div class="wrapper-md" ng-controller="PersonNewCtrl">
+  <div class="panel panel-default">
+    <div class="panel-heading font-bold">
+      Add Person
+    </div>
+    <div class="panel-body">
+    <form class="form-horizontal form-validation" role="form" ng-submit="addPerson()" name="form">
+      <div ng-include="'tpl/person/form.html'"></div>
+    </form>
+    </div>
+  </div>
+</div>
