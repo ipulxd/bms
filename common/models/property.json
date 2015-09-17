@@ -42,14 +42,14 @@
       },
       "_selectable": false
     },
-    "detail": {
-      "type": "DetailProperty",
+    "address": {
+      "type": "GenericAddress",
       "required": false,
       "length": null,
       "precision": null,
       "scale": null,
       "postgresql": {
-        "columnName": "detail",
+        "columnName": "address",
         "dataType": "jsonb",
         "dataLength": null,
         "dataPrecision": null,

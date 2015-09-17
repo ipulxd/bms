@@ -42,6 +42,23 @@
         "nullable": "NO"
       },
       "_selectable": false
+    },
+    "address": {
+      "type": "GenericAddress",
+      "required": false,
+      "default": {},
+      "length": null,
+      "precision": null,
+      "scale": null,
+      "postgresql": {
+        "columnName": "address",
+        "dataType": "jsonb",
+        "dataLength": null,
+        "dataPrecision": null,
+        "dataScale": null,
+        "nullable": "YES"
+      },
+      "_selectable": true
     }
   },
   "validations": [],
