@@ -1,0 +1,56 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3" >
+    <i class="fa fa-institution m-r-xs"></i>
+    Unit Type Setting
+  </h1>
+</div>
+<div class="wrapper-md" ng-controller="ConfigUnitTypeCtrl">
+  <div class="panel panel-default">
+    <table st-table="displayUnitTypes" st-safe-src="unitTypes" class="table table-striped">
+      <thead class="panel-heading">
+      <tr>
+        <th colspan="6" class="h4">
+          Unit Types
+          <button type="button" class="btn btn-xs btn-success m-l-sm" ng-click="add()">
+            <i class="fa fa-plus"></i> Add New
+          </button>
+        </th>
+      </tr>
+      <tr>
+        <th st-sort="code">Code</th>
+        <th st-sort="name">Name</th>
+        <th class="text-right" st-sort="spaceSize">Size</th>
+        <th st-sort="spaceUnit">Unit</th>
+        <th st-sort="building.name">Building</th>
+        <th width="50"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="row in displayUnitTypes">
+        <td>{{row.code}}</td>
+        <td>{{row.name}}</td>
+        <td class="text-right">{{row.spaceSize | number}}</td>
+        <td>{{row.spaceUnit}}</td>
+        <td>{{(row.buildingId)?row.building.name:'All building'}}</td>
+        <td style="white-space: nowrap">
+          <div class="buttons pull-right">
+            <a ng-click="edit(row)" class="btn btn-xs btn-success" tooltip="Edit">
+              <i class="fa fa-edit"></i> edit
+            </a>
+            <a ng-click="remove(row)" class="btn btn-xs btn-danger" tooltip="Delete">
+              <i class="fa fa-times"></i> del
+            </a>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="5" class="text-center">
+          <div st-pagination="" st-items-by-page="5" st-displayed-pages="7" class="no-margin"></div>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

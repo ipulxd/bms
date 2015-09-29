@@ -5,8 +5,8 @@
  */
 angular.module('app')
   .run(
-  ['$rootScope', '$state', '$stateParams', 'AuthService',
-    function ($rootScope, $state, $stateParams, AuthService) {
+  ['$rootScope', '$state', '$stateParams', 'AuthService', '$localStorage',
+    function ($rootScope, $state, $stateParams, AuthService, $localStorage) {
       //$rootScope.$state = $state;
       //$rootScope.$stateParams = $stateParams;
       $rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {
@@ -17,13 +17,35 @@ angular.module('app')
         }
 
         if (AuthService.isLoggedIn()) {
-          $rootScope.$state = $state;
-          $rootScope.$stateParams = $stateParams;
+          //$rootScope.$state = $state;
+          //$rootScope.$stateParams = $stateParams;
+
+
+          if (toState.name === 'setting.property.set-scope' || toState.name === 'setting.property.list') {
+            $rootScope.$state = $state;
+            $rootScope.$stateParams = $stateParams;
+          } else {
+            // Ensure property is set in localStorage
+            if ( angular.isDefined($localStorage.property) ) {
+              if ($localStorage.property.id && $localStorage.property.code) {
+                $rootScope.$state = $state;
+                $rootScope.$stateParams = $stateParams;
+              } else {
+                e.preventDefault();
+                $state.go('setting.property.set-scope');
+              }
+            } else {
+              e.preventDefault();
+              $state.go('setting.property.set-scope');
+            }
+          }
+
           return true;
         } else {
           e.preventDefault();
           $state.go('access.login');
         }
+
       });
 
     }
@@ -117,7 +139,7 @@ angular.module('app')
           url: '/set-scope',
           templateUrl: 'tpl/property/set-scope.html'
         })
-        .state('setting.property.index', {
+        .state('setting.property.list', {
           url: '/list',
           templateUrl: 'tpl/property/index.html'
         })
@@ -141,6 +163,40 @@ angular.module('app')
         .state('setting.building.edit', {
           url: '/:id/edit',
           templateUrl: 'tpl/building/edit.html'
+        })
+        .state('setting.unit-type', {
+          url: '/unit-type',
+          template: '<div ui-view></div>',
+          resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+              return $ocLazyLoad.load('js/controllers/config-unit-type.js');
+            }]
+          }
+        })
+        .state('setting.unit-type.list', {
+          url: '/list',
+          templateUrl: 'tpl/unit-type/index.html'
+        })
+        .state('setting.unit', {
+          url: '/unit',
+          template: '<div ui-view></div>',
+          resolve: {
+            deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+              return $ocLazyLoad.load('js/controllers/config-unit.js');
+            }]
+          }
+        })
+        .state('setting.unit.list', {
+          url: '/list',
+          templateUrl: 'tpl/unit/index.html'
+        })
+        .state('setting.unit.new', {
+          url: '/new',
+          templateUrl: 'tpl/unit/new.html'
+        })
+        .state('setting.unit.edit', {
+          url: '/:id/edit',
+          templateUrl: 'tpl/unit/edit.html'
         })
         .state('setting.user', {
           url: '/user',

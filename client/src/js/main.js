@@ -3,8 +3,8 @@
 /* Controllers */
 
 angular.module('app')
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'Property',
-    function(              $scope,   $translate,   $localStorage,   $window,   Property ) {
+  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', '$rootScope', 'Property',
+    function(              $scope,   $translate,   $localStorage,   $window,   $rootScope,   Property ) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
@@ -74,30 +74,51 @@ angular.module('app')
       }
 
       // Set property scope
-      if ( angular.isDefined($localStorage.property) ) {
-        $scope.app.property = $localStorage.property;
-      } else {
-        $localStorage.property = { id: null, name: 'Please Set Property Scope'};
-        $scope.app.property = $localStorage.property;
-      }
-      // find property
-      Property.find(
-        {filter: {
-          include: {
-            relation: 'propertyBelongs',
-            scope: {
-              include: 'company'
-            }
+      function setPropertyScope() {
+        if (angular.isDefined($localStorage.property)) {
+          if ($localStorage.property.id && $localStorage.property.code && $localStorage.property.name) {
+            $scope.app.property = $localStorage.property;
+          } else {
+            $localStorage.property = {id: null, name: 'Please Set Property Scope'};
+            $scope.resultSetProperty = null;
+            $scope.app.property = $localStorage.property;
           }
-        }},
-        function (result) {
-          $scope.propertyOptions = result;
+        } else {
+          $localStorage.property = {id: null, name: 'Please Set Property Scope'};
+          $scope.resultSetProperty = null;
+          $scope.app.property = $localStorage.property;
+        }
+      }
+      setPropertyScope();
+
+      $rootScope.$on('$stateChangeSuccess',
+        function(event, toState, toParams, fromState, fromParams) {
+
+          // find property at set property scope
+          if (toState.name === 'setting.property.set-scope') {
+
+            setPropertyScope();
+
+            Property.find(
+              {filter: {
+                include: {
+                  relation: 'propertyBelongs',
+                  scope: {
+                    include: 'company'
+                  }
+                }
+              }},
+              function (result) {
+                $scope.propertyOptions = result;
+              }
+            );
+            // set property scope
+            $scope.setPropertyScope = function () {
+              $localStorage.property = $scope.app.property;
+              $scope.resultSetProperty = 'Property has been set to: '+$scope.app.property.name;
+            };
+          }
         }
       );
-      // set property scope
-      $scope.setPropertyScope = function () {
-        $localStorage.property = $scope.app.property;
-        $scope.resultSetProperty = 'Property has been set to: '+$scope.app.property.name;
-      };
 
   }]);

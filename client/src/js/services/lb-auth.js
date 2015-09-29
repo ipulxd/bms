@@ -7,7 +7,6 @@ angular.module('lbAuth', [])
           .login({email: email, password: password})
           .$promise
           .then(function(response) {
-            console.log(response);
             $rootScope.currentUser = {
               id: response.user.id,
               tokenId: response.id,
@@ -15,6 +14,7 @@ angular.module('lbAuth', [])
               name: response.user.name
             };
             $localStorage.user = $rootScope.currentUser;
+            $localStorage.property = { id: null, name: 'Please Set Property Scope'};
             $rootScope.isLoggedIn = true;
           });
       }
