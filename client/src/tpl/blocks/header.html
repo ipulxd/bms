@@ -8,7 +8,7 @@
         </button>
         <!-- brand -->
         <a href="#/" class="navbar-brand text-lt">
-          <i class="fa fa-btc"></i>
+          <i class="fa fa-institution"></i>
           <img src="img/logo.png" alt="." class="hide">
           <span class="hidden-folded m-l-xs">{{app.name}}</span>
         </a>
@@ -18,8 +18,13 @@
 
       <!-- navbar collapse -->
       <div class="collapse pos-rlt navbar-collapse box-shadow {{app.settings.navbarCollapseColor}}">
+
+        <div class="nav navbar-nav">
+          <h3 class="font-thin m-t-sm">{{app.property.name}}</h3>
+        </div>
+
         <!-- buttons -->
-        <div class="nav navbar-nav hidden-xs">
+        <div class="nav navbar-nav hidden-xs" ng-hide="true">
           <a href class="btn no-shadow navbar-btn" ng-click="app.settings.asideFolded = !app.settings.asideFolded">
             <i class="fa {{app.settings.asideFolded ? 'fa-indent' : 'fa-dedent'}} fa-fw"></i>
           </a>
@@ -30,10 +35,10 @@
         <!-- / buttons -->
 
         <!-- link and dropdown -->
-        <ul class="nav navbar-nav hidden-sm">
+        <ul class="nav navbar-nav hidden-sm" ng-hide="true">
           <li class="dropdown pos-stc" dropdown>
             <a href class="dropdown-toggle" dropdown-toggle>
-              <span>Mega</span> 
+              <span>Mega</span>
               <span class="caret"></span>
             </a>
             <div class="dropdown-menu wrapper w-full bg-white">
@@ -160,22 +165,9 @@
         </ul>
         <!-- / link and dropdown -->
 
-        <!-- search form -->
-        <form class="navbar-form navbar-form-sm navbar-left shift" ui-shift="prependTo" target=".navbar-collapse" role="search" ng-controller="TypeaheadDemoCtrl">
-          <div class="form-group">
-            <div class="input-group">
-              <input type="text" ng-model="selected" typeahead="state for state in states | filter:$viewValue | limitTo:8" class="form-control input-sm bg-light no-border rounded padder" placeholder="Search projects...">
-              <span class="input-group-btn">
-                <button type="submit" class="btn btn-sm bg-light rounded"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-          </div>
-        </form>
-        <!-- / search form -->
-
         <!-- nabar right -->
         <ul class="nav navbar-nav navbar-right">
-          <li class="dropdown hidden-sm" is-open="lang.isopen" dropdown>
+          <li class="dropdown hidden-sm" is-open="lang.isopen" dropdown ng-hide="true">
             <a href class="dropdown-toggle" dropdown-toggle>
               {{selectLang}} <b class="caret"></b>
             </a>
@@ -190,7 +182,7 @@
           <li class="hidden-xs">
             <a ui-fullscreen></a>
           </li>
-          <li class="dropdown" dropdown>
+          <li class="dropdown" dropdown ng-hide="true">
             <a href class="dropdown-toggle" dropdown-toggle>
               <i class="icon-bell fa-fw"></i>
               <span class="visible-xs-inline">Notifications</span>
@@ -260,7 +252,7 @@
               </li>
               <li class="divider"></li>
               <li>
-                <a ui-sref="access.signin">Logout</a>
+                <a ui-sref="access.login">Logout</a>
               </li>
             </ul>
             <!-- / dropdown -->

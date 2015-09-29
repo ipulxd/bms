@@ -3,8 +3,8 @@
 /* Controllers */
 
 angular.module('app')
-  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 
-    function(              $scope,   $translate,   $localStorage,   $window ) {
+  .controller('AppCtrl', ['$scope', '$translate', '$localStorage', '$window', 'Property',
+    function(              $scope,   $translate,   $localStorage,   $window,   Property ) {
       // add 'ie' classes to html
       var isIE = !!navigator.userAgent.match(/MSIE/i);
       isIE && angular.element($window.document.body).addClass('ie');
@@ -12,8 +12,8 @@ angular.module('app')
 
       // config
       $scope.app = {
-        name: 'Angulr',
-        version: '2.0.1',
+        name: 'BMS',
+        version: '0.1',
         // for chart colors
         color: {
           primary: '#7266ba',
@@ -36,7 +36,7 @@ angular.module('app')
           asideDock: false,
           container: false
         }
-      }
+      };
 
       // save settings to local storage
       if ( angular.isDefined($localStorage.settings) ) {
@@ -72,5 +72,32 @@ angular.module('app')
           // Checks for iOs, Android, Blackberry, Opera Mini, and Windows mobile devices
           return (/iPhone|iPod|iPad|Silk|Android|BlackBerry|Opera Mini|IEMobile/).test(ua);
       }
+
+      // Set property scope
+      if ( angular.isDefined($localStorage.property) ) {
+        $scope.app.property = $localStorage.property;
+      } else {
+        $localStorage.property = { id: null, name: 'Please Set Property Scope'};
+        $scope.app.property = $localStorage.property;
+      }
+      // find property
+      Property.find(
+        {filter: {
+          include: {
+            relation: 'propertyBelongs',
+            scope: {
+              include: 'company'
+            }
+          }
+        }},
+        function (result) {
+          $scope.propertyOptions = result;
+        }
+      );
+      // set property scope
+      $scope.setPropertyScope = function () {
+        $localStorage.property = $scope.app.property;
+        $scope.resultSetProperty = 'Property has been set to: '+$scope.app.property.name;
+      };
 
   }]);

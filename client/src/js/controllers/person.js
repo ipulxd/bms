@@ -147,7 +147,7 @@ app.controller('PersonEditCtrl', ['$scope', 'Person', '$state', '$stateParams', 
         $scope.customer,
         function () {
           toaster.pop('success', '', 'Data pelanggan berhasil diperbarui');
-          $state.go('app.customer.list');
+          $state.go('app.person.list');
         },
         function (error) {
           toaster.pop('error', '', 'Gagal memperbarui data pelanggan!');

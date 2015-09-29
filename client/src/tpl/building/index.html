@@ -1,0 +1,56 @@
+<div class="bg-light lter b-b wrapper-md">
+  <h1 class="m-n font-thin h3" >
+    <i class="fa fa-institution m-r-xs"></i>
+    Building Setting
+  </h1>
+</div>
+<div class="wrapper-md" ng-controller="ConfigBuildingCtrl">
+  <div class="panel panel-default">
+    <table st-table="displayBuildings" st-safe-src="buildings" class="table table-striped">
+      <thead class="panel-heading">
+      <tr>
+        <th colspan="6" class="h4">
+          List of Buildings
+          <a ui-sref="setting.building.new" class="btn btn-xs btn-success m-l-sm">
+            <i class="fa fa-plus"></i> Add New
+          </a>
+        </th>
+      </tr>
+      <tr>
+        <th st-sort="code">Code</th>
+        <th st-sort="name">Name</th>
+        <th st-sort="floorNum">Floor Num</th>
+        <th st-sort="created">Created</th>
+        <th st-sort="updated">Updated</th>
+        <th width="50"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr st-select-row="row" st-select-mode="single" ng-repeat="row in displayBuildings">
+        <td>{{row.code}}</td>
+        <td>{{row.name}}</td>
+        <td>{{row.floorNum}}</td>
+        <td>{{row.created | date: 'yyyy-MM-dd HH:mm:ss Z'}}</td>
+        <td>{{row.updated | date: 'yyyy-MM-dd HH:mm:ss Z'}}</td>
+        <td style="white-space: nowrap">
+          <div class="buttons pull-right">
+            <a ui-sref="setting.building.edit({ id: row.id })" class="btn btn-xs btn-success" tooltip="Edit">
+              <i class="fa fa-edit"></i> edit
+            </a>
+            <a ng-click="remove(row)" class="btn btn-xs btn-danger" tooltip="Delete">
+              <i class="fa fa-times"></i> del
+            </a>
+          </div>
+        </td>
+      </tr>
+      </tbody>
+      <tfoot>
+      <tr>
+        <td colspan="5" class="text-center">
+          <div st-pagination="" st-items-by-page="5" st-displayed-pages="7" class="no-margin"></div>
+        </td>
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

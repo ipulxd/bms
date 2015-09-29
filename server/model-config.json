@@ -17,21 +17,21 @@
   "User": {
     "dataSource": "db"
   },
-  "AccessToken": {
-    "dataSource": "db",
-    "public": false
+  "accessToken": {
+    "dataSource": "dsmain",
+    "public": true
   },
-  "ACL": {
-    "dataSource": "db",
-    "public": false
+  "acl": {
+    "dataSource": "dsmain",
+    "public": true
   },
-  "RoleMapping": {
-    "dataSource": "db",
-    "public": false
+  "roleMapping": {
+    "dataSource": "dsmain",
+    "public": true
   },
-  "Role": {
-    "dataSource": "db",
-    "public": false
+  "role": {
+    "dataSource": "dsmain",
+    "public": true
   },
   "Person": {
     "dataSource": "dsmain",
@@ -56,12 +56,6 @@
   "PersonAddress": {
     "dataSource": "dsmain",
     "public": true
-  },
-  "CompanyPropertyRel": {
-    "dataSource": "dsmain",
-    "public": true,
-    "$promise": {},
-    "$resolved": true
   },
   "Company": {
     "dataSource": "dsmain",
@@ -107,6 +101,18 @@
   },
   "Helper": {
     "dataSource": null,
+    "public": true
+  },
+  "CompanyPropertyRel": {
+    "dataSource": "dsmain",
+    "public": true
+  },
+  "IndexUnit": {
+    "dataSource": "dsmain",
+    "public": true
+  },
+  "Staff": {
+    "dataSource": "dsmain",
     "public": true
   }
 }

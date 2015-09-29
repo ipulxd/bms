@@ -1,0 +1,133 @@
+<div class="modal-body wrapper-lg">
+  <div class="row">
+    <h3 class="m-t-none m-b-md font-bold text-center">
+      Add Property
+    </h3>
+    <form role="form" name="form">
+      <div class="row">
+        <div class="form-group col-sm-12">
+          <label class="col-sm-2 control-label m-t-xs text-right">Property Code</label>
+          <div class="col-sm-10">
+            <input type="text" ng-model="item.code" class="form-control form-validation"
+                   ng-trim="false" ng-change="item.code = item.code.split(' ').join('').toUpperCase()"
+                   placeholder="No space" required>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-12">
+          <label class="col-sm-2 control-label m-t-xs text-right">Property Name</label>
+          <div class="col-sm-10">
+            <input type="text" ng-model="item.name" class="form-control form-validation" required>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-12">
+          <label class="col-sm-2 control-label m-t-xs text-right">Address </label>
+          <div class="col-sm-10">
+            <input type="text" placeholder="Building name & floor" class="form-control" ng-model="item.address.building" >
+            <input type="text" placeholder="Street" class="form-control" ng-model="item.address.street" >
+            <div class="row">
+              <div class="col-sm-6">
+                <input type="text" placeholder="City" class="form-control" ng-model="item.address.city" >
+              </div>
+              <div class="col-sm-6">
+                <input type="text" placeholder="Province" class="form-control" ng-model="item.address.province" >
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <input type="text" placeholder="Country" class="form-control" ng-model="item.address.country" >
+              </div>
+              <div class="col-sm-6">
+                <input type="text" placeholder="Postal Code" class="form-control" ng-model="item.address.postalCode" >
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <input type="text" placeholder="Phone" class="form-control" ng-model="item.address.phone" >
+              </div>
+              <div class="col-sm-6">
+                <input type="text" placeholder="Fax" class="form-control" ng-model="item.address.fax" >
+              </div>
+            </div>
+            <input type="email" placeholder="Email" class="form-control" ng-model="item.address.email" >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <h4 class="m-t-md m-b-md font-bold text-center">
+          Owner
+        </h4>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-12">
+          <label class="col-sm-2 control-label m-t-xs text-right">Company Code</label>
+          <div class="col-sm-10">
+            <input type="text" ng-model="item.owner.code" class="form-control form-validation"
+                   ng-trim="false" ng-change="item.owner.code = item.owner.code.split(' ').join('').toUpperCase()"
+                   placeholder="No space" required>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-12">
+          <label class="col-sm-2 control-label m-t-xs text-right">Company Name</label>
+          <div class="col-sm-10">
+            <input type="text" ng-model="item.owner.name" class="form-control form-validation" required>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-12">
+          <label class="col-sm-2 control-label m-t-xs text-right">Address </label>
+          <div class="col-sm-10">
+            <input type="text" placeholder="Building name & floor" class="form-control" ng-model="item.owner.address.building" >
+            <input type="text" placeholder="Street" class="form-control" ng-model="item.owner.address.street" >
+            <div class="row">
+              <div class="col-sm-6">
+                <input type="text" placeholder="City" class="form-control" ng-model="item.owner.address.city" >
+              </div>
+              <div class="col-sm-6">
+                <input type="text" placeholder="Province" class="form-control" ng-model="item.owner.address.province" >
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <input type="text" placeholder="Country" class="form-control" ng-model="item.owner.address.country" >
+              </div>
+              <div class="col-sm-6">
+                <input type="text" placeholder="Postal Code" class="form-control" ng-model="item.owner.address.postalCode" >
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <input type="text" placeholder="Phone" class="form-control" ng-model="item.owner.address.phone" >
+              </div>
+              <div class="col-sm-6">
+                <input type="text" placeholder="Fax" class="form-control" ng-model="item.owner.address.fax" >
+              </div>
+            </div>
+            <input type="email" placeholder="Email" class="form-control" ng-model="item.owner.address.email" >
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-sm-12">
+          <label class="col-sm-2 control-label m-t-xs text-right">Tax Reg.</label>
+          <div class="col-sm-10">
+            <input type="text" ng-model="item.company.taxReg" class="form-control form-validation">
+          </div>
+        </div>
+      </div>
+
+      <div class="checkbox m-t-lg">
+        <button type="submit" class="btn btn-sm btn-success pull-right text-uc m-t-n-xs" ng-click="ok()" ng-disabled="form.$invalid">
+          <strong>Save</strong>
+        </button>
+        <button class="btn btn-sm pull-right text-uc m-t-n-xs" ng-click="cancel()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

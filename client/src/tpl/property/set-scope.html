@@ -1,0 +1,40 @@
+<div class="wrapper-md">
+  <div class="panel panel-default">
+    <div class="panel-heading font-bold">
+      Set Property Scope
+    </div>
+    <div class="panel-body">
+    <form class="form-horizontal form-validation" role="form" ng-submit="setPropertyScope()" name="form">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <div class="col-sm-12">
+              <ui-select ng-model="app.property" class="form-validation" ng-required="true">
+                <ui-select-match placeholder="Select property..">{{$select.selected.code}}: {{$select.selected.name}}</ui-select-match>
+                <ui-select-choices repeat="prop in propertyOptions | filter: $select.search">
+                  <div ng-bind-html="prop.code+': '+prop.name | highlight: $select.search"></div>
+                </ui-select-choices>
+              </ui-select>
+            </div>
+            <div class="col-sm-12">
+              <div class="alert alert-success" ng-show="resultSetProperty">
+                {{resultSetProperty}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="pull-right m-r-sm">
+          <a href="" onclick="window.history.back()" class="btn btn-default">
+            Cancel
+          </a>
+          <button type="submit" class="btn btn-success m-r-xs" ng-disabled="form.$invalid">
+            <strong>Set Scope</strong>
+          </button>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
