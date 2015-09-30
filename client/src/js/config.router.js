@@ -190,14 +190,6 @@ angular.module('app')
           url: '/list',
           templateUrl: 'tpl/unit/index.html'
         })
-        .state('setting.unit.new', {
-          url: '/new',
-          templateUrl: 'tpl/unit/new.html'
-        })
-        .state('setting.unit.edit', {
-          url: '/:id/edit',
-          templateUrl: 'tpl/unit/edit.html'
-        })
         .state('setting.user', {
           url: '/user',
           template: '<div ui-view></div>',

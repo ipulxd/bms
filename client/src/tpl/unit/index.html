@@ -1,0 +1,81 @@
+<div ng-controller="ConfigUnitCtrl">
+  <div class="bg-light lter b-b wrapper-md">
+    <form name="formSelectBuilding" class="form-horizontal">
+      <div class="form-group m-b-n-xs">
+        <label class="control-label h3 font-thin col-xs-2 m-t-n-xs text-left">
+          <i class="fa fa-institution m-r-xs"></i>
+          Unit Setting
+        </label>
+        <div class="input-group m-l-sm col-xs-9">
+          <span class="input-group-addon">for</span>
+          <ui-select ng-model="option.selectedBuilding" class="form-validation">
+            <ui-select-match placeholder="Select building...">{{$select.selected.code}}: {{$select.selected.name}}</ui-select-match>
+            <ui-select-choices repeat="b in buildingOptions | filter: $select.search">
+              <div ng-bind-html="b.code+': '+b.name | highlight: $select.search"></div>
+            </ui-select-choices>
+          </ui-select>
+          <span class="input-group-btn">
+            <button ng-click="loadUnits()" class="btn btn-default">
+              <span ng-show="!loading">
+                <i class="fa fa-check-square-o"></i> Set
+              </span>
+              <span ng-show="loading">
+                <i class="fa fa-spinner fa-spin"></i> Loading..
+              </span>
+            </button>
+          </span>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="wrapper-md" ng-show="option.showUnitPanel">
+    <div class="panel panel-default">
+      <table st-table="displayUnits" st-safe-src="units" class="table table-striped">
+        <thead class="panel-heading">
+        <tr>
+          <th colspan="6" class="h4">
+            Units
+            <button type="button" class="btn btn-xs btn-success m-l-sm" ng-click="add()">
+              <i class="fa fa-plus"></i> Add New
+            </button>
+          </th>
+        </tr>
+        <tr>
+          <th st-sort="code">Code</th>
+          <th st-sort="unitType.name">Type</th>
+          <th st-sort="unitFloor">Floor</th>
+          <th st-sort="unitNumber">Number</th>
+          <th class="text-right" st-sort="spaceSize">Size</th>
+          <th width="50"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in displayUnits">
+          <td>{{row.code}}</td>
+          <td>{{row.unitType.name}}</td>
+          <td>{{row.unitFloor}}</td>
+          <td>{{row.unitNum}}</td>
+          <td class="text-right">{{row.spaceSize | number}} {{row.spaceUnit}}</td>
+          <td style="white-space: nowrap">
+            <div class="buttons pull-right">
+              <a ng-click="edit(row)" class="btn btn-xs btn-success" tooltip="Edit">
+                <i class="fa fa-edit"></i> edit
+              </a>
+              <a ng-click="remove(row)" class="btn btn-xs btn-danger" tooltip="Delete">
+                <i class="fa fa-times"></i> del
+              </a>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+          <td colspan="5" class="text-center">
+            <div st-pagination="" st-items-by-page="5" st-displayed-pages="7" class="no-margin"></div>
+          </td>
+        </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
